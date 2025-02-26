@@ -16,7 +16,7 @@ services:
       "--use-coinmarketcap=$USE_COINMARKETCAP_MARKETS",
       "--use-osmosis=$USE_OSMOSIS_MARKETS",
       "--use-polymarket=$USE_POLYMARKET_MARKETS",
-      "--use-alpaca=$USE_ALPACA_MARKETS",
+      "--use-stocks=$USE_STOCK_MARKETS",
       "--temp-file=data/markets.json",
     ]
     environment:
@@ -27,7 +27,7 @@ services:
       - USE_COINMARKETCAP_MARKETS=${USE_COINMARKETCAP_MARKETS:-false}
       - USE_OSMOSIS_MARKETS=${USE_OSMOSIS_MARKETS:-false}
       - USE_POLYMARKET_MARKETS=${USE_POLYMARKET_MARKETS:-false}
-      - USE_ALPACA_MARKETS=${USE_ALPACA_MARKETS:-false}
+      - USE_STOCK_MARKETS=${USE_STOCK_MARKETS:-false}
     volumes:
       - markets_data:/data
     networks:

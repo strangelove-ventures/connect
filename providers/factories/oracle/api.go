@@ -20,6 +20,7 @@ import (
 	"github.com/skip-mev/connect/v2/providers/apis/defi/uniswapv3"
 	"github.com/skip-mev/connect/v2/providers/apis/geckoterminal"
 	"github.com/skip-mev/connect/v2/providers/apis/kraken"
+	"github.com/skip-mev/connect/v2/providers/apis/polygon"
 	"github.com/skip-mev/connect/v2/providers/apis/polymarket"
 	apihandlers "github.com/skip-mev/connect/v2/providers/base/api/handlers"
 	"github.com/skip-mev/connect/v2/providers/base/api/metrics"
@@ -98,6 +99,8 @@ func APIQueryHandlerFactory(
 		apiPriceFetcher, err = osmosis.NewAPIPriceFetcher(logger, cfg.API, metrics)
 	case providerName == polymarket.Name:
 		apiDataHandler, err = polymarket.NewAPIHandler(cfg.API)
+	case providerName == polygon.Name:
+		apiDataHandler, err = polygon.NewAPIHandler(cfg.API)
 	default:
 		return nil, fmt.Errorf("unknown provider: %s", cfg.Name)
 	}

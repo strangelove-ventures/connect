@@ -9654,9 +9654,9 @@ var (
     }
   }`
 
-	AlpacaStockMarketMap mmtypes.MarketMap
-	// AlpacaStockMarketMapJSON is the JSON representation of the stock MarketMap
-	AlpacaStockMarketMapJSON = `
+	StockMarketMap mmtypes.MarketMap
+	// StockMarketMapJSON is the JSON representation of the stock MarketMap
+	StockMarketMapJSON = `
 {
 	"markets": {
 		"AAPL/USD": {
@@ -9672,6 +9672,10 @@ var (
 			"provider_configs": [
 				{
 					"name": "alpaca_ws",
+					"off_chain_ticker": "AAPL"
+				},
+				{
+					"name": "polygon_api",
 					"off_chain_ticker": "AAPL"
 				}
 			]
@@ -9690,7 +9694,7 @@ func init() {
 		unmarshalValidate("Osmosis", OsmosisMarketMapJSON, &OsmosisMarketMap),
 		unmarshalValidate("Polymarket", PolymarketMarketMapJSON, &PolymarketMarketMap),
 		unmarshalValidate("Forex", ForexMarketMapJSON, &ForexMarketMap),
-		unmarshalValidate("Alpaca", AlpacaStockMarketMapJSON, &AlpacaStockMarketMap),
+		unmarshalValidate("Stock", StockMarketMapJSON, &StockMarketMap),
 	)
 	if err != nil {
 		panic(err)

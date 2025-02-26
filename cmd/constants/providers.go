@@ -15,6 +15,7 @@ import (
 	"github.com/skip-mev/connect/v2/providers/apis/dydx"
 	krakenapi "github.com/skip-mev/connect/v2/providers/apis/kraken"
 	"github.com/skip-mev/connect/v2/providers/apis/marketmap"
+	"github.com/skip-mev/connect/v2/providers/apis/polygon"
 	"github.com/skip-mev/connect/v2/providers/apis/polymarket"
 	"github.com/skip-mev/connect/v2/providers/volatile"
 	"github.com/skip-mev/connect/v2/providers/websockets/alpaca"
@@ -175,6 +176,11 @@ var (
 			Name:      alpaca.Name,
 			WebSocket: alpaca.DefaultWebSocketConfig,
 			Type:      types.ConfigType,
+		},
+		{
+			Name: polygon.Name,
+			API:  polygon.DefaultAPIConfig,
+			Type: types.ConfigType,
 		},
 	}
 
