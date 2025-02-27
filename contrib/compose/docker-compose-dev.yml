@@ -16,6 +16,7 @@ services:
       "--use-coinmarketcap=$USE_COINMARKETCAP_MARKETS",
       "--use-osmosis=$USE_OSMOSIS_MARKETS",
       "--use-polymarket=$USE_POLYMARKET_MARKETS",
+      "--use-alpaca=$USE_ALPACA_MARKETS",
       "--temp-file=data/markets.json",
     ]
     environment:
@@ -26,6 +27,7 @@ services:
       - USE_COINMARKETCAP_MARKETS=${USE_COINMARKETCAP_MARKETS:-false}
       - USE_OSMOSIS_MARKETS=${USE_OSMOSIS_MARKETS:-false}
       - USE_POLYMARKET_MARKETS=${USE_POLYMARKET_MARKETS:-false}
+      - USE_ALPACA_MARKETS=${USE_ALPACA_MARKETS:-true}
     volumes:
       - markets_data:/data
     networks:
@@ -87,6 +89,9 @@ services:
     build:
       context: ../..
       dockerfile: ./contrib/images/connect.sidecar.dev.Dockerfile
+    environment:
+      - ALPACA_API_KEY=PK9N1OEPATR6CWA8C8RU
+      - ALPACA_API_SECRET=0OeKUQgyQjsGSlGBjm4yba5fJQEPegi90VfRQjwX
     entrypoint: [
       "connect",
       "--update-market-config-path", "/oracle/market.json",

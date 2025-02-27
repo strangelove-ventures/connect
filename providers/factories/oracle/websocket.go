@@ -12,6 +12,7 @@ import (
 	apihandlers "github.com/skip-mev/connect/v2/providers/base/api/handlers"
 	wshandlers "github.com/skip-mev/connect/v2/providers/base/websocket/handlers"
 	wsmetrics "github.com/skip-mev/connect/v2/providers/base/websocket/metrics"
+	"github.com/skip-mev/connect/v2/providers/websockets/alpaca"
 	"github.com/skip-mev/connect/v2/providers/websockets/binance"
 	"github.com/skip-mev/connect/v2/providers/websockets/bitfinex"
 	"github.com/skip-mev/connect/v2/providers/websockets/bitstamp"
@@ -100,6 +101,8 @@ func WebSocketQueryHandlerFactory(
 		wsDataHandler, err = mexc.NewWebSocketDataHandler(logger, cfg.WebSocket)
 	case okx.Name:
 		wsDataHandler, err = okx.NewWebSocketDataHandler(logger, cfg.WebSocket)
+	case alpaca.Name:
+		wsDataHandler, err = alpaca.NewWebSocketDataHandler(logger, cfg.WebSocket)
 	default:
 		return nil, fmt.Errorf("unknown provider: %s", cfg.Name)
 	}
