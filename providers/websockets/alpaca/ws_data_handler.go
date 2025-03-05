@@ -51,8 +51,7 @@ func NewWebSocketDataHandler(
 	apiSecret := os.Getenv("ALPACA_API_SECRET")
 
 	if apiKey == "" || apiSecret == "" {
-		return nil, fmt.Errorf("API key and secret are required for Alpaca websocket, missing %s or %s",
-			"ALPACA_API_KEY", "ALPACA_API")
+		logger.Error("missing Alpaca API key and secret", zap.String("ALPACA_API_KEY", apiKey), zap.String("ALPACA_API_SECRET", apiSecret))
 	}
 
 	logger.Info("creating new Alpaca websocket handler",

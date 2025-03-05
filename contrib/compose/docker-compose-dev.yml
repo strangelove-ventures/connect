@@ -27,7 +27,7 @@ services:
       - USE_COINMARKETCAP_MARKETS=${USE_COINMARKETCAP_MARKETS:-false}
       - USE_OSMOSIS_MARKETS=${USE_OSMOSIS_MARKETS:-false}
       - USE_POLYMARKET_MARKETS=${USE_POLYMARKET_MARKETS:-false}
-      - USE_ALPACA_MARKETS=${USE_ALPACA_MARKETS:-true}
+      - USE_ALPACA_MARKETS=${USE_ALPACA_MARKETS:-false}
     volumes:
       - markets_data:/data
     networks:
@@ -89,8 +89,10 @@ services:
     build:
       context: ../..
       dockerfile: ./contrib/images/connect.sidecar.dev.Dockerfile
-    environment:
-    # Put ALPACA_API_KEY and ALPACA_API_SECRET here
+    # environment:
+    # # Put ALPACA_API_KEY and ALPACA_API_SECRET here
+    # - ALPACA_API_KEY=${ALPACA_API_KEY}
+    # - ALPACA_API_SECRET=${ALPACA_API_SECRET}
     entrypoint: [
       "connect",
       "--update-market-config-path", "/oracle/market.json",

@@ -24,7 +24,7 @@ var (
 	useOsmosis       = flag.Bool("use-osmosis", false, "use osmosis markets")
 	usePolymarket    = flag.Bool("use-polymarket", false, "use polymarket markets")
 	useForex         = flag.Bool("use-forex", false, "use forex markets")
-	useAlpaca        = flag.Bool("use-alpaca", true, "use alpaca markets")
+	useAlpaca        = flag.Bool("use-alpaca", false, "use alpaca markets")
 	tempFile         = flag.String("temp-file", "markets.json", "temporary file to store the market map")
 )
 
