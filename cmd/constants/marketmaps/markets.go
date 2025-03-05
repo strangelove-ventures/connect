@@ -9654,9 +9654,9 @@ var (
     }
   }`
 
-	AlpacaStockMarketMap mmtypes.MarketMap
-	// AlpacaStockMarketMapJSON is the JSON representation of the stock MarketMap
-	AlpacaStockMarketMapJSON = `
+	StockMarketMap mmtypes.MarketMap
+	// StockMarketMapJSON is the JSON representation of the stock MarketMap
+	StockMarketMapJSON = `
 {
 	"markets": {
 		"AAPL/USD": {
@@ -9673,6 +9673,409 @@ var (
 				{
 					"name": "alpaca_ws",
 					"off_chain_ticker": "AAPL"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "AAPL"
+				}
+			]
+		},
+		"MSFT/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "MSFT",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "MSFT"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "MSFT"
+				}
+			]
+		},
+		"GOOGL/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "GOOGL",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "GOOGL"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "GOOGL"
+				}
+			]
+		},
+		"AMZN/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "AMZN",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "AMZN"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "AMZN"
+				}
+			]
+		},
+		"META/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "META",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "META"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "META"
+				}
+			]
+		},
+		"NVDA/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "NVDA",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "NVDA"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "NVDA"
+				}
+			]
+		},
+		"TSLA/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "TSLA",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "TSLA"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "TSLA"
+				}
+			]
+		},
+		"BRK.B/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "BRK.B",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "BRK.B"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "BRK.B"
+				}
+			]
+		},
+		"JPM/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "JPM",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "JPM"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "JPM"
+				}
+			]
+		},
+		"JNJ/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "JNJ",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "JNJ"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "JNJ"
+				}
+			]
+		},
+		"V/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "V",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "V"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "V"
+				}
+			]
+		},
+		"WMT/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "WMT",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "WMT"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "WMT"
+				}
+			]
+		},
+		"SPY/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "SPY",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "SPY"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "SPY"
+				}
+			]
+		},
+		"MA/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "MA",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "MA"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "MA"
+				}
+			]
+		},
+		"UNH/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "UNH",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "UNH"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "UNH"
+				}
+			]
+		},
+		"QQQ/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "QQQ",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "QQQ"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "QQQ"
+				}
+			]
+		},
+		"DIS/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "DIS",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "DIS"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "DIS"
+				}
+			]
+		},
+		"KO/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "KO",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "KO"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "KO"
+				}
+			]
+		},
+		"NFLX/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "NFLX",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "NFLX"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "NFLX"
+				}
+			]
+		},
+		"AMD/USD": {
+			"ticker": {
+				"currency_pair": {
+					"Base": "AMD",
+					"Quote": "USD"
+				},
+				"decimals": 8,
+				"min_provider_count": 1,
+				"enabled": true
+			},
+			"provider_configs": [
+				{
+					"name": "alpaca_ws",
+					"off_chain_ticker": "AMD"
+				},
+				{
+					"name": "polygon_api",
+					"off_chain_ticker": "AMD"
 				}
 			]
 		}
@@ -9690,7 +10093,7 @@ func init() {
 		unmarshalValidate("Osmosis", OsmosisMarketMapJSON, &OsmosisMarketMap),
 		unmarshalValidate("Polymarket", PolymarketMarketMapJSON, &PolymarketMarketMap),
 		unmarshalValidate("Forex", ForexMarketMapJSON, &ForexMarketMap),
-		unmarshalValidate("Alpaca", AlpacaStockMarketMapJSON, &AlpacaStockMarketMap),
+		unmarshalValidate("Stock", StockMarketMapJSON, &StockMarketMap),
 	)
 	if err != nil {
 		panic(err)
