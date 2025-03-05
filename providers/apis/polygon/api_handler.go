@@ -5,12 +5,14 @@ import (
 	"fmt"
 	"math/big"
 	"net/http"
+	"os"
 	"strings"
 	"time"
 
 	"github.com/skip-mev/connect/v2/oracle/config"
 	"github.com/skip-mev/connect/v2/oracle/types"
 	providertypes "github.com/skip-mev/connect/v2/providers/types"
+	"go.uber.org/zap"
 )
 
 var _ types.PriceAPIDataHandler = (*APIHandler)(nil)
@@ -27,6 +29,7 @@ type APIHandler struct {
 
 // NewAPIHandler returns a new Polygon PriceAPIDataHandler.
 func NewAPIHandler(
+	logger *zap.Logger,
 	api config.APIConfig,
 ) (types.PriceAPIDataHandler, error) {
 	if api.Name != Name {
@@ -39,6 +42,19 @@ func NewAPIHandler(
 
 	if err := api.ValidateBasic(); err != nil {
 		return nil, fmt.Errorf("invalid api config for %s: %w", Name, err)
+	}
+
+	apiKey := os.Getenv("POLYGON_API_KEY")
+	if apiKey == "" {
+		logger.Error("missing Polygon API key", zap.String("POLYGON_API_KEY", apiKey))
+	}
+
+	// Set the API key for the Polygon API.
+	if len(api.Endpoints) == 0 {
+		api.Endpoints[0].Authentication = config.Authentication{
+			APIKey:       fmt.Sprintf("Bearer %s", apiKey),
+			APIKeyHeader: "Authorization",
+		}
 	}
 
 	return &APIHandler{
@@ -62,8 +78,17 @@ func (h *APIHandler) CreateURL(
 		return "", fmt.Errorf("no tickers provided")
 	}
 
-	query := strings.Join(ids, ",")
-	url := fmt.Sprintf(Endpoint, h.api.Endpoints[0].URL, query)
+	if len(ids) > 1 {
+		return "", fmt.Errorf("polygon.io only supports one ticker per request")
+	}
+
+	ticker := strings.Join(ids, ",")
+
+	// Date must be formatted as "YYYY-MM-DD"
+	// Date must be exactly 1 day ago from now.
+	dateStr := time.Now().UTC().AddDate(0, 0, -1).Format("2006-01-02")
+
+	url := fmt.Sprintf(Endpoint, h.api.Endpoints[0].URL, ticker, dateStr, dateStr)
 	return url, nil
 }
 
@@ -104,7 +129,7 @@ func (h *APIHandler) ParseResponse(
 			continue
 		}
 
-		quote := tickerResponse.Open
+		quote := (tickerResponse.Open + tickerResponse.Close + tickerResponse.Low + tickerResponse.High) / 4
 		resolved[ticker] = types.NewPriceResult(big.NewFloat(quote), time.Now().UTC())
 	}
 

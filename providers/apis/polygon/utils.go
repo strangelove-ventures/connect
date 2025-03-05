@@ -15,7 +15,10 @@ const (
 
 	// Endpoint is the base URL of the Polygon.io API. This includes the base and quote
 	// currency pairs that need to be inserted into the URL.
-	Endpoint = "%s/v2/aggs/ticker/%s/range/1/day/2024-01-09/2024-01-09"
+	//
+	// Example from docs: https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/%s/%s
+	// Last two '%s' are the date (Date must be formatted as "YYYY-MM-DD")
+	Endpoint = "%s/v2/aggs/ticker/%s/range/1/day/%s/%s"
 )
 
 var DefaultAPIConfig = config.APIConfig{
@@ -26,13 +29,7 @@ var DefaultAPIConfig = config.APIConfig{
 	Interval:         1 * time.Minute, // Adjust based on your API tier
 	ReconnectTimeout: 5 * time.Second,
 	MaxQueries:       1, // Polygon.io requires separate API calls per ticker
-	Endpoints: []config.Endpoint{{
-		URL: URL,
-		Authentication: config.Authentication{
-			APIKey:       "Bearer hxsBOz2ppzAInEQxHtd4HRyq2UNkySH_",
-			APIKeyHeader: "Authorization",
-		},
-	}},
+	Endpoints:        []config.Endpoint{{URL: URL}},
 }
 
 // PolygonResponse represents the response from Polygon.io API

@@ -8,6 +8,7 @@ import (
 	"time"
 
 	providertypes "github.com/skip-mev/connect/v2/providers/types"
+	"go.uber.org/zap"
 
 	"github.com/stretchr/testify/require"
 
@@ -27,6 +28,8 @@ var (
 )
 
 func TestCreateURL(t *testing.T) {
+	dateStr := time.Now().UTC().AddDate(0, 0, -1).Format("2006-01-02")
+
 	testCases := []struct {
 		name        string
 		cps         []types.ProviderTicker
@@ -44,7 +47,7 @@ func TestCreateURL(t *testing.T) {
 			cps: []types.ProviderTicker{
 				amzxusd,
 			},
-			url:         fmt.Sprintf("https://api.polygon.io/v2/aggs/ticker/AMZN/range/1/day/2024-01-09/2024-01-09"),
+			url:         fmt.Sprintf("https://api.polygon.io/v2/aggs/ticker/AMZN/range/1/day/%s/%s", dateStr, dateStr),
 			expectedErr: false,
 		},
 		{
@@ -53,14 +56,14 @@ func TestCreateURL(t *testing.T) {
 				amzxusd,
 				nvdaxusd,
 			},
-			url:         fmt.Sprintf("https://api.polygon.io/v2/aggs/ticker/AMZN,NVDA/range/1/day/2024-01-09/2024-01-09"),
-			expectedErr: false,
+			url:         fmt.Sprintf("https://api.polygon.io/v2/aggs/ticker/AMZN,NVDA/range/1/day/%s/%s", dateStr, dateStr),
+			expectedErr: true,
 		},
 	}
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			h, err := polygon.NewAPIHandler(polygon.DefaultAPIConfig)
+			h, err := polygon.NewAPIHandler(zap.NewNop(), polygon.DefaultAPIConfig)
 			require.NoError(t, err)
 
 			url, err := h.CreateURL(tc.cps)
@@ -199,7 +202,7 @@ func TestParseResponse(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			h, err := polygon.NewAPIHandler(polygon.DefaultAPIConfig)
+			h, err := polygon.NewAPIHandler(zap.NewNop(), polygon.DefaultAPIConfig)
 			require.NoError(t, err)
 
 			// First register the tickers with the handler's cache
@@ -269,7 +272,7 @@ func TestNewAPIHandler(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			_, err := polygon.NewAPIHandler(tc.config)
+			_, err := polygon.NewAPIHandler(zap.NewNop(), tc.config)
 			if tc.expectedErr {
 				require.Error(t, err)
 			} else {
