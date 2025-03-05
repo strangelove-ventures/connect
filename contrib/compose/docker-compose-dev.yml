@@ -90,7 +90,7 @@ services:
     build:
       context: ../..
       dockerfile: ./contrib/images/connect.sidecar.dev.Dockerfile
-    environment:
+    #environment:
     # Put ALPACA_API_KEY and ALPACA_API_SECRET here
     # - ALPACA_API_KEY=${ALPACA_API_KEY}
     # - ALPACA_API_SECRET=${ALPACA_API_SECRET}
