@@ -17,6 +17,7 @@ import (
 	"github.com/skip-mev/connect/v2/providers/apis/marketmap"
 	"github.com/skip-mev/connect/v2/providers/apis/polymarket"
 	"github.com/skip-mev/connect/v2/providers/volatile"
+	"github.com/skip-mev/connect/v2/providers/websockets/alpaca"
 	binancews "github.com/skip-mev/connect/v2/providers/websockets/binance"
 	"github.com/skip-mev/connect/v2/providers/websockets/bitfinex"
 	"github.com/skip-mev/connect/v2/providers/websockets/bitstamp"
@@ -167,6 +168,13 @@ var (
 			Name: marketmap.Name,
 			API:  marketmap.DefaultAPIConfig,
 			Type: mmtypes.ConfigType,
+		},
+
+		// Stock providers
+		{
+			Name:      alpaca.Name,
+			WebSocket: alpaca.DefaultWebSocketConfig,
+			Type:      types.ConfigType,
 		},
 	}
 
