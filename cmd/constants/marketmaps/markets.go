@@ -9911,10 +9911,10 @@ var (
 				}
 			]
 		},
-		"PG/USD": {
+		"SPY/USD": {
 			"ticker": {
 				"currency_pair": {
-					"Base": "PG",
+					"Base": "SPY",
 					"Quote": "USD"
 				},
 				"decimals": 8,
@@ -9924,11 +9924,11 @@ var (
 			"provider_configs": [
 				{
 					"name": "alpaca_ws",
-					"off_chain_ticker": "PG"
+					"off_chain_ticker": "SPY"
 				},
 				{
 					"name": "polygon_api",
-					"off_chain_ticker": "PG"
+					"off_chain_ticker": "SPY"
 				}
 			]
 		},
@@ -9974,10 +9974,10 @@ var (
 				}
 			]
 		},
-		"HD/USD": {
+		"QQQ/USD": {
 			"ticker": {
 				"currency_pair": {
-					"Base": "HD",
+					"Base": "QQQ",
 					"Quote": "USD"
 				},
 				"decimals": 8,
@@ -9987,11 +9987,11 @@ var (
 			"provider_configs": [
 				{
 					"name": "alpaca_ws",
-					"off_chain_ticker": "HD"
+					"off_chain_ticker": "QQQ"
 				},
 				{
 					"name": "polygon_api",
-					"off_chain_ticker": "HD"
+					"off_chain_ticker": "QQQ"
 				}
 			]
 		},
