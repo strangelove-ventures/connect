@@ -1,10 +1,10 @@
 # Alpaca WebSocket Provider
 
-This provider implements a WebSocket connection with Alpaca's real-time market data API. It uses the delayed SIP feed at `wss://stream.data.alpaca.markets/v2/{feed}`. Feed can be either `iex`, `delayed_sip` `sip`. `sip` requires a paid subscription while the others are free to use. `delayed_sip` is on a 15 minute delay and is currently in use for our POC.
+This provider implements a WebSocket connection with Alpaca's real-time market data API. Data is fed over the `wss://stream.data.alpaca.markets/v2/{feed}` URL. Feed can be either `iex`, `delayed_sip`, or `sip`. `delayed_sip` is on a 15 minute delay and is currently in use for our POC. `sip` requires a paid subscription while the others are free to use. 
 
 ## Authentication
 
-The provider requires Alpaca API credentials (key and secret) to authenticate. When a connection is established, the provider sends an authentication message:
+The provider requires Alpaca API credentials (key and secret) to authenticate. When a connection is established, the provider must send an authentication message within **10 seconds**:
 
 ```json
 {
@@ -16,7 +16,7 @@ The provider requires Alpaca API credentials (key and secret) to authenticate. W
 
 ## Subscription
 
-After authentication, the provider subscribes to quotes for the requested tickers:
+After authentication, the provider subscribes to quotes for the requested tickers within **10 seconds**:
 
 ```json
 { 
@@ -38,7 +38,7 @@ Alpaca confirms the subscription with a response like this:
 
 ## Data Format
 
-Alpaca provides quotes in the following format:
+Alpaca provides quotes in an array like so:
 
 ```json
 [
@@ -54,7 +54,7 @@ Alpaca provides quotes in the following format:
     "c":["R"],
     "z":"C",
     "t":"2025-02-27T14:52:36.312631482Z"
-  }
+  },
 ]
 ```
 

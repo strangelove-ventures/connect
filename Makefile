@@ -24,7 +24,7 @@ USE_COINGECKO_MARKETS ?= false
 USE_COINMARKETCAP_MARKETS ?= false
 USE_OSMOSIS_MARKETS ?= false
 USE_POLYMARKET_MARKETS ?= false
-USE_ALPACA_MARKETS ?= true
+USE_ALPACA_MARKETS ?= false
 SCRIPT_DIR := $(CURDIR)/scripts
 DEV_COMPOSE ?= $(CURDIR)/contrib/compose/docker-compose-dev.yml
 

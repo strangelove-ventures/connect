@@ -90,8 +90,7 @@ services:
       context: ../..
       dockerfile: ./contrib/images/connect.sidecar.dev.Dockerfile
     environment:
-      - ALPACA_API_KEY=PK9N1OEPATR6CWA8C8RU
-      - ALPACA_API_SECRET=0OeKUQgyQjsGSlGBjm4yba5fJQEPegi90VfRQjwX
+    # Put ALPACA_API_KEY and ALPACA_API_SECRET here
     entrypoint: [
       "connect",
       "--update-market-config-path", "/oracle/market.json",
