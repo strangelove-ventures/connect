@@ -1,6 +1,8 @@
 package alpaca
 
 import (
+	"time"
+
 	"github.com/skip-mev/connect/v2/oracle/config"
 )
 
@@ -13,6 +15,16 @@ const (
 	// `delayed_sip` to `sip` for real-time. This requires
 	// a paid API token.
 	WSS = "wss://stream.data.alpaca.markets/v2/delayed_sip"
+)
+
+const (
+	// DefaultMaxSubscriptionsPerBatch is the default maximum number of subscriptions
+	// that can be assigned to a single batch/write/message.
+	DefaultMaxSubscriptionsPerBatch = 10
+
+	// DefaultWriteInterval is the default interval at which messages are written to the
+	// websocket connection.
+	DefaultWriteInterval = 1 * time.Second
 )
 
 // DefaultWebSocketConfig is the default configuration for the Alpaca Websocket.
@@ -30,8 +42,8 @@ var DefaultWebSocketConfig = config.WebSocketConfig{
 	ReadTimeout:                   config.DefaultReadTimeout,
 	WriteTimeout:                  config.DefaultWriteTimeout,
 	PingInterval:                  config.DefaultPingInterval,
-	WriteInterval:                 config.DefaultWriteInterval,
+	WriteInterval:                 DefaultWriteInterval,
 	MaxReadErrorCount:             config.DefaultMaxReadErrorCount,
 	MaxSubscriptionsPerConnection: config.DefaultMaxSubscriptionsPerConnection,
-	MaxSubscriptionsPerBatch:      config.DefaultMaxSubscriptionsPerBatch,
+	MaxSubscriptionsPerBatch:      DefaultMaxSubscriptionsPerBatch,
 }
