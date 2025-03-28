@@ -47,7 +47,7 @@ export USE_POLYMARKET_MARKETS ?= $(USE_POLYMARKET_MARKETS)
 export USE_STOCK_MARKETS ?= $(USE_STOCK_MARKETS)
 export SCRIPT_DIR := $(SCRIPT_DIR)
 
-ldflags := -X github.com/skip-mev/connect/v2/cmd/build.Build=$(TAG)
+ldflags := -X github.com/skip-mev/connect/v2/cmd/build.Build=$(TAG) 
 
 ldflags += $(LDFLAGS)
 ldflags := $(strip $(ldflags))
@@ -104,7 +104,7 @@ whitespace += $(whitespace)
 comma := ,
 build_tags_comma_sep := $(subst $(whitespace),$(comma),$(build_tags))
 
-ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=testapp \
+ldflags_testapp = -X github.com/cosmos/cosmos-sdk/version.Name=testapp \
 		  -X github.com/cosmos/cosmos-sdk/version.AppName=testappd \
 		  -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
 		  -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
@@ -129,16 +129,16 @@ ifeq (boltdb,$(findstring boltdb,$(COSMOS_BUILD_OPTIONS)))
 endif
 
 ifeq (,$(findstring nostrip,$(COSMOS_BUILD_OPTIONS)))
-  ldflags += -w -s
+  ldflags_testapp += -w -s
 endif
 
-ldflags += $(LDFLAGS)
-ldflags := $(strip $(ldflags))
+ldflags_testapp += $(LDFLAGS)
+ldflags_testapp := $(strip $(ldflags))
 
 build_tags += $(BUILD_TAGS)
 build_tags := $(strip $(build_tags))
 
-BUILD_FLAGS := -tags "$(build_tags)" -ldflags '$(ldflags)'
+BUILD_FLAGS := -tags "$(build_tags)" -ldflags '$(ldflags_testapp)'
 
 # check for nostrip option
 ifeq (,$(findstring nostrip,$(COSMOS_BUILD_OPTIONS)))
