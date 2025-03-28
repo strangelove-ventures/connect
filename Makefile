@@ -47,15 +47,18 @@ export USE_POLYMARKET_MARKETS ?= $(USE_POLYMARKET_MARKETS)
 export USE_STOCK_MARKETS ?= $(USE_STOCK_MARKETS)
 export SCRIPT_DIR := $(SCRIPT_DIR)
 
-BUILD_TAGS := -X github.com/skip-mev/connect/v2/cmd/build.Build=$(TAG)
+ldflags := -X github.com/skip-mev/connect/v2/cmd/build.Build=$(TAG)
+
+ldflags += $(LDFLAGS)
+ldflags := $(strip $(ldflags))
+
 
 ###############################################################################
 ###                               build                                     ###
 ###############################################################################
 
 build: tidy
-	@go build -ldflags="$(BUILD_TAGS)" \
-	 -o ./build/ ./...
+	@go build -ldflags="$(ldflags)" -o ./build/ ./...
 
 run-oracle-client: build
 	@./build/client --host localhost --port 8080
@@ -77,7 +80,7 @@ stop-sidecar-dev:
 	@$(DOCKER_COMPOSE) -f $(DEV_COMPOSE) --profile sidecar down
 
 install: tidy
-	@go install -ldflags="$(BUILD_TAGS)" -mod=readonly ./cmd/connect
+	@go install -ldflags="$(ldflags)" -mod=readonly ./cmd/connect
 
 .PHONY: build install run-oracle-client start-all-dev stop-all-dev
 
