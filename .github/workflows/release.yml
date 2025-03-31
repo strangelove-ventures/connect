@@ -8,12 +8,10 @@ on:
       - "v*.**" # Push events to matching v*.*, i.e. v0.0.0, v0.0.0-alpha.0, etc.
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   release:
-    permissions:
-      contents: write # for goreleaser/goreleaser-action to create a GitHub release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,6 +25,6 @@ jobs:
         uses: goreleaser/goreleaser-action@v6
         with:
           args: release --clean
-          version: "~> v1"
+          version: "~> v2"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
