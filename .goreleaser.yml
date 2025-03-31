@@ -14,8 +14,17 @@ builds:
     - 'darwin'
     binary: 'connect'
     id: 'connect'
+    env:
+      - CGO_ENABLED=0
+    flags:
+      - -trimpath
     ldflags:
-      - "-X github.com/skip-mev/connect/v2/cmd/build.Build={{.Version}}"
+      - "-s -w -X github.com/skip-mev/connect/v2/cmd/build.Build={{.Version}} -extldflags '-static'"
+    tags:
+      - netgo
+      - osusergo
+      - static_build
+
 archives:
   - format: tar.gz
     wrap_in_directory: true
