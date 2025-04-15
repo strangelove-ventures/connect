@@ -3196,6 +3196,31 @@ var (
 	CoreMarketMapJSON = `
 	{
 		"markets": {
+		  "ONDO/USD": {
+			"ticker": {
+			  "currency_pair": {
+				"Base": "ONDO",
+				"Quote": "USD"
+			  },
+			  "decimals": 8,
+			  "min_provider_count": 2,
+			  "enabled": true
+			},
+			"provider_configs": [
+			  {
+				"name": "coingecko_api",
+				"off_chain_ticker": "ondo-finance/usd"
+			  },
+			  {
+			  	"name": "coinmarketcap_api",
+			  	"off_chain_ticker": "21159"
+			  },
+			  {
+				"name": "coinbase_ws",
+				"off_chain_ticker": "ONDO-USD"
+			  }
+			]
+		  },
 		  "AAVE/USD": {
 			"ticker": {
 			  "currency_pair": {
