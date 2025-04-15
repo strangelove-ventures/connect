@@ -3,9 +3,9 @@ project_name: connect
 
 release:
   github:
-    owner: skip-mev
+    owner: strangelove-ventures
     name: connect
-  prerelease: true
+  prerelease: "false"
 
 builds:
   - main: 'cmd/connect/main.go'
@@ -30,7 +30,6 @@ snapshot:
   name_template: SNAPSHOT-{{ .Commit }}
 
 changelog:
-  skip: false
   use: 'github'
 
 checksum:
